@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+union {
+    float numero;
+    unsigned char posicion[4];
+}conversor;
+
+int main()
+{
+    printf("Introduzca el valor que quiere ver en hexadecimal\n");
+    scanf("%f", &conversor.numero);
+    printf("0x%0.2x%0.2x%0.2x%0.2x",conversor.posicion[3],         
+    conversor.posicion[2],conversor.posicion[1], conversor.posicion[0]);
+    return 0;
+}
