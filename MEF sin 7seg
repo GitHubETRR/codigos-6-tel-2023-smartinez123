@@ -1,0 +1,95 @@
+#define LEDROJO 10
+#define LEDAZUL 8
+#define PULSADOR 12
+#define TIEMPOANTIR 40
+
+void debounceFSM_init();      // debe cargar el estado inicial
+void debounceFSM_update();    // debe leer las entradas, resolver la lógica de transición de estados y actualizar las salidas
+void buttonPressed();         // debe invertir el estado del LED1
+void buttonReleased();        // debe invertir el estado del LED2 
+
+void botonPresionado();
+void botonSuelto();
+
+typedef enum{
+BUTTON_UP,
+BUTTON_FALLING,
+BUTTON_DOWN,
+BUTTON_RAISING,
+} debounceState_t;
+
+debounceState_t currentstatus;
+
+void setup()
+{
+  pinMode(LEDROJO, OUTPUT);
+  pinMode(LEDAZUL, OUTPUT);
+  pinMode(PULSADOR, INPUT);
+  debounceFSM_init();
+     
+ 
+}
+
+void loop(){
+  debounceFSM_update();
+  delay(5);
+}
+void debounceFSM_init(){
+  currentstatus = BUTTON_UP;
+}
+
+void debounceFSM_update(){
+  static unsigned long tprevio = millis ();
+  
+  
+  switch (currentstatus){
+    case BUTTON_UP:
+    if (digitalRead (PULSADOR) == LOW);
+        currentstatus = BUTTON_FALLING;
+        tprevio = millis();
+         digitalWrite (LEDROJO, LOW);
+        digitalWrite (LEDAZUL, HIGH);
+    
+    break;
+
+    
+    case BUTTON_DOWN:
+    if (digitalRead (PULSADOR) == HIGH){
+        currentstatus = BUTTON_RAISING;
+        tprevio = millis();
+  }
+    break;
+
+    case BUTTON_FALLING:
+    if (millis()-tprevio>= TIEMPOANTIR){
+      if (digitalRead (PULSADOR)== LOW){
+        currentstatus = BUTTON_DOWN;
+        botonPresionado();
+      }
+      else{
+        currentstatus = BUTTON_UP;
+      }
+    }
+
+      
+    case BUTTON_RAISING:
+    if (millis()-tprevio>= TIEMPOANTIR){
+      if (digitalRead (PULSADOR)== HIGH){
+        currentstatus = BUTTON_UP;
+        botonSuelto();
+      }
+      else{
+        currentstatus = BUTTON_DOWN;
+      }
+    }
+  }
+}       
+void botonPresionado(){
+     digitalWrite (LEDROJO, HIGH);
+     digitalWrite (LEDAZUL, LOW);
+}
+
+void botonSuelto(){
+     digitalWrite (LEDROJO, LOW);
+     digitalWrite (LEDAZUL, HIGH); 
+}
