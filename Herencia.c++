@@ -7,7 +7,7 @@ public:
   void encontrar();
 };
 
-class Lapiz : public Cartuchera{
+class Lapiz : public Cartuchera{   //la clase lapiz hereda lo de la clase cartuchera
 public:
   void escribir(){
     cout << "El lapiz puede escribir" << endl;
