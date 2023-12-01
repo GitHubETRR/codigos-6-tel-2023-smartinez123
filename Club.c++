@@ -17,7 +17,7 @@ int main() {
 
  
     cout << "Ingrese el nombre del club: ";  
-    getline(cin, club.nombre);    //guarda la linea que se ingreso, cin en club
+    getline(cin, club.nombre);    }
 
     cout << "Ingrese el nombre del director técnico: ";
     getline(cin, club.directorTecnico); //el getline te toma el espacio
