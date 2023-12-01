@@ -1,4 +1,4 @@
-def calcular_promedio(notas):       #recibe la variable notas 
+def calcular_promedio(notas):       
     if not notas:
         return 0.0  #retorna un float
 
