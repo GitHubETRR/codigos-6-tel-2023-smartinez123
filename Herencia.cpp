@@ -8,39 +8,26 @@ public:
 };
 
 class Lapiz : public Cartuchera{   //la clase lapiz hereda lo de la clase cartuchera
-public:
-  void escribir();//metodos
-  
+  public:
+      void escribir(); //metodos
+      void dibujar();
+      void romper();
 
-  void dibujar();
-   
-  }
 
-  void romper();
-
-  }
 };
 
 class Goma : public Cartuchera{
-public:
-  void borrar(){
-    cout << "La goma puede borrar" << endl;
-  }
-
-  void gastar(){
-    cout << "La goma se puede gastar" << endl;
-  }
+  public:
+    void borrar();
+    void gastar();
 };
 
 class Regla : public Cartuchera{
-public:
-  void medir(){
-    cout << "La regla se usa para medir" << endl;
-  }
+  public:
+     void medir();
+     void doblar();
 
-  void doblar(){
-    cout << "La regla se puede doblar" << endl;
-  }
+  
 };
 
 void Cartuchera::encontrar(){  //encontrar es un metodo de cartuchera
@@ -50,10 +37,23 @@ void Lapiz::escribir(){
  cout << "El lapiz puede escribir" << endl;
 }
 void Lapiz::dibujar(){
-    cout << "El lapiz puede dibujar" << endl
+    cout << "El lapiz puede dibujar" << endl;
 }
 void Lapiz::romper(){
     cout << "El lapiz se puede romper" << endl;
+}
+void Goma::borrar(){
+    cout << "La goma puede borrar" << endl;
+}
+  void Goma::gastar(){
+    cout << "La goma se puede gastar" << endl;
+  }
+  void Regla::medir(){
+    cout << "La regla se usa para medir" << endl;
+  }
+  void Regla::doblar(){ //cuando se llama al metodo doblar se ejecuta 
+     cout << "La regla se puede doblar" << endl;
+  }
 
 int main(){
   Lapiz lapiz;
