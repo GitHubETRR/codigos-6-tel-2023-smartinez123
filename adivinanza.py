@@ -14,7 +14,7 @@ print("\n\tSolo tenes ",
       " chances de adivinar el entero!\n")
  
 
-count = 1 #el contador empieza en 1
+count = 1 
  
 
 while count <= round(math.log(upper - lower + 1, 2)): #si el contador es menor a los intentos entra al bucle
