@@ -9,16 +9,15 @@ public:
 
 class Lapiz : public Cartuchera{   //la clase lapiz hereda lo de la clase cartuchera
 public:
-  void escribir(){
-    cout << "El lapiz puede escribir" << endl;
+  void escribir();//metodos
+  
+
+  void dibujar();
+   
   }
 
-  void dibujar(){
-    cout << "El lapiz puede dibujar" << endl;
-  }
+  void romper();
 
-  void romper(){
-    cout << "El lapiz se puede romper" << endl;
   }
 };
 
@@ -44,9 +43,17 @@ public:
   }
 };
 
-void Cartuchera::encontrar(){
+void Cartuchera::encontrar(){  //encontrar es un metodo de cartuchera
   cout << "El útil se encuentra en la cartuchera" << endl;
 }
+void Lapiz::escribir(){
+ cout << "El lapiz puede escribir" << endl;
+}
+void Lapiz::dibujar(){
+    cout << "El lapiz puede dibujar" << endl
+}
+void Lapiz::romper(){
+    cout << "El lapiz se puede romper" << endl;
 
 int main(){
   Lapiz lapiz;
